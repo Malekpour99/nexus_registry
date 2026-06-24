@@ -13,10 +13,10 @@ cp .env.example .env
 
 ```sh
 # Generate Traefik authentication credentials
-echo $(htpasswd -nb <username> <password>) | sed -e s/\\$/\\$\\$/g
+echo $(htpasswd -nb <username> <password>) | sed -e 's/\$/$$/g'
 ```
 
-- replace `username` and `password` placeholders with your desired username and password and then assign the generated string to `TRAEFIK_AUTH_CREDENTIALS` in your environment variables
+- replace `username` and `password` placeholders with your desired username and password and then assign the generated string to `TRAEFIK_AUTH_CREDENTIALS` in your environment variables (if your password contains special characters (e.g. `$`), make sure to escape them properly using `\` or surround your password with single quotes `'`).
 
 ### Initial Project Run
 
@@ -36,7 +36,7 @@ cat /nexus-data/admin.password
 ```
 
 - After login, you will be prompted by nexus to change your password.
-- Only enable *anonymous access* for secure internal systems which you are certain about them!
+- Only enable _anonymous access_ for secure internal systems which you are certain about them!
 
 #### Nexus Storage & Repository
 
