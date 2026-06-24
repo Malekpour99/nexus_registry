@@ -1,5 +1,17 @@
 # Traefik - Nexus Project
 
+## Table of Contents
+
+- [Traefik - Nexus Project](#traefik---nexus-project)
+  - [Table of Contents](#table-of-contents)
+  - [How To Setup](#how-to-setup)
+    - [Prepare Environment Variables](#prepare-environment-variables)
+    - [Initial Project Run](#initial-project-run)
+      - [Nexus Storage \& Repository](#nexus-storage--repository)
+      - [Nexus Security](#nexus-security)
+    - [Routine Project Run](#routine-project-run)
+  - [Links](#links)
+
 ## How To Setup
 
 ### Prepare Environment Variables
@@ -25,13 +37,13 @@ echo $(htpasswd -nb <username> <password>) | sed -e 's/\$/$$/g'
 docker compose up -d
 ```
 
-- Extracting Nexus admin initial password
+- Extracting Nexus **admin** initial password
 
 ```sh
 # connecting to nexus service container
 docker compose exec -it nexus /bin/sh
 
-# showing auto-generated initial password
+# showing auto-generated initial password for 'admin' user
 cat /nexus-data/admin.password
 ```
 
@@ -58,3 +70,9 @@ Move **Docker Bearer Token Realm** to the **Active** column.
 # running service (detached)
 docker compose up -d
 ```
+
+## Links
+
+- **Traefik Dashboard**: <https://traefik.${BASE_DOMAIN}>
+  - You can use the credentials you set in `TRAEFIK_AUTH_CREDENTIALS` to login to the dashboard.
+- **Nexus Repository**: <https://registry.${BASE_DOMAIN}>
