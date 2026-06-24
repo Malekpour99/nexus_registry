@@ -10,7 +10,7 @@ volumes:
 
 services:
   traefik:
-    image: traefik:v3.5
+    image: traefik:v3.7
     command:
       - "--log.level=INFO"
       - "--log.filepath=/traefik.log"
