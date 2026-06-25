@@ -11,6 +11,7 @@ volumes:
 services:
   traefik:
     image: traefik:v3.7
+    restart: unless-stopped
     command:
       - "--log.level=INFO"
       - "--log.filepath=/traefik.log"
@@ -73,7 +74,7 @@ services:
 
   nexus:
     image: sonatype/nexus3
-    restart: always
+    restart: unless-stopped
     volumes:
       - "nexus-data:/nexus-data"
     networks:
